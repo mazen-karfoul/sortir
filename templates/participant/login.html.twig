@@ -1,0 +1,21 @@
+{% extends "layout.html.twig" %}
+
+{% block title %} login {% endblock %}
+
+{% block  main%}
+ <form method="POST">
+     <label for="username">IDENTIFIANT :</label>
+     <input type="text" name="_username" id="username">
+
+     <label for="password"> MOT DE PASSE :</label>
+     <input type="password" name="_password" id="password">
+
+     <input type="checkbox" name="souvenir" id="souvenir"> <label for="souvenir"> Se souvenir de moi </label>
+
+     <a href="#"> Mot de passe oublié </a>
+
+     <button type="submit"> Connexion</button>
+
+ </form>
+
+{% endblock %}

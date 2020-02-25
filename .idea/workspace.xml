@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96d1facf-1063-4da5-9059-f7229f939e10" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sortir.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sortir.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +102,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\sortir\templates" />
       <recent name="C:\wamp64\www\sortir" />
     </key>
   </component>
@@ -125,7 +119,9 @@
       <workItem from="1582551419634" duration="715000" />
       <workItem from="1582552811251" duration="1932000" />
       <workItem from="1582618289430" duration="1492000" />
-      <workItem from="1582619827985" duration="491000" />
+      <workItem from="1582619827985" duration="6717000" />
+      <workItem from="1582627056758" duration="56000" />
+      <workItem from="1582627260192" duration="152000" />
     </task>
     <servers />
   </component>
@@ -141,17 +137,17 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="559" y="241" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1600.860@0.0.1600.860" timestamp="1582557083990" />
-    <state x="580" y="189" key="FileChooserDialogImpl" timestamp="1582619543923">
+    <state x="580" y="189" key="FileChooserDialogImpl" timestamp="1582622551056">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="580" y="189" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1582619543923" />
+    <state x="580" y="189" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1582622551056" />
     <state x="303" y="76" key="SettingsEditor" timestamp="1582620321337">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="303" y="76" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1582620321337" />
-    <state x="507" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1582618289586">
+    <state x="507" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1582627262160">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="507" y="259" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1582618289586" />
+    <state x="507" y="259" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1582627262160" />
   </component>
 </project>
