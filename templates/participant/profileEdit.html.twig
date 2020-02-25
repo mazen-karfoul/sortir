@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modification du profil utilisateur{% endblock %}
+{% block body %}
+    <div class="container bubble mt-3">
+        <div class="container">
+            <h2 class="bubble-title">Modification de ton Profil
+                <br/>
+                {{ user.username }}</h2>
+        </div>
+        {% if user.avatar %}
+            <img alt="photo de {{ user.username }}" class=" brad" src=" {{  vich_uploader_asset(app.user, 'avatarFile') | imagine_filter('medium_square') }}">
+        {% endif %}
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        <div class="form-group text-center">
+            <button class="btn btn-lg btn-success mt-2 ml-0" type="submit">Enregistrer les modifications !</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
