@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ParticipantController extends AbstractController
 {
     /**
-     * @Route("/login", name="participant_login")
+     * @Route("/login", name="login")
      */
     public function login()
     {
@@ -16,4 +16,13 @@ class ParticipantController extends AbstractController
 
         ]);
     }
+
+    /**
+     * @Route("/",name="participant_home")
+     */
+
+    public function  home()
+            {
+                return $this->render('participant/home.html.twig',[]);
+            }
 }
