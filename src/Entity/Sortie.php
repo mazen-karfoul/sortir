@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SortieRepository")
@@ -22,34 +24,54 @@ class Sortie
     private $nom;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=false)
      */
     private $dateDebut;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=false)
      */
     private $duree;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=false)
      */
     private $dateCloture;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=false)
      */
     private $nbInscriptionsMax;
 
     /**
-     * @ORM\Column(type="text", length=500)
+     * @ORM\Column(type="text", length=500, nullable=false)
      */
     private $descriptionInfos;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\JoinColumn()Column(type="integer")
      */
     private $etatSortie;
+
+    /**
+     * @ORM\Column(type="string", length=250)
+     */
+    private $urlPhoto;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $organisateur;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $lieuxNoLieu;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $etatsNoEtat;
 
     /**
      * @return mixed
@@ -243,23 +265,5 @@ class Sortie
         $this->etatsNoEtat = $etatsNoEtat;
     }
 
-    /**
-     * @ORM\Column(type="string", length=250)
-     */
-    private $urlPhoto;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $organisateur;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $lieuxNoLieu;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $etatsNoEtat;
 }
