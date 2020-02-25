@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Sortie;
 use Doctrine\DBAL\Types\DateTimeType;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
@@ -60,7 +61,8 @@ class SortieType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'data_class' => Sortie::class,
+
         ]);
     }
 }

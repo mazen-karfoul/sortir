@@ -30,7 +30,7 @@ class Etat
         return $this->idEtat;
     }
 
-   
+
 
     /**
      * @return mixed
