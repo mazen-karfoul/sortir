@@ -25,4 +25,12 @@ class ParticipantController extends AbstractController
             {
                 return $this->render('participant/home.html.twig',[]);
             }
+
+    /**
+     * @Route("/logout",name="logout")
+     */
+            public function logout()
+               {
+
+               }
 }

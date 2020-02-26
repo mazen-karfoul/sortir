@@ -15,7 +15,7 @@ class Participant implements UserInterface
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $idparticipant;
+    private $id;
 
 
     /**
@@ -66,15 +66,15 @@ class Participant implements UserInterface
      */
     public function getIdparticipant()
     {
-        return $this->idparticipant;
+        return $this->id;
     }
 
     /**
-     * @param mixed $idparticipant
+     * @param mixed $id
      */
-    public function setIdparticipant($idparticipant): void
+    public function setIdparticipant($id): void
     {
-        $this->idparticipant = $idparticipant;
+        $this->id = $id;
     }
 
     /**

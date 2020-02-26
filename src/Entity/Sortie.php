@@ -16,7 +16,7 @@ class Sortie
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $idSortie;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=30)
@@ -76,17 +76,17 @@ class Sortie
     /**
      * @return mixed
      */
-    public function getIdSortie()
+    public function getId()
     {
-        return $this->idSortie;
+        return $this->id;
     }
 
     /**
-     * @param mixed $idSortie
+     * @param mixed $id
      */
-    public function setIdSortie($idSortie): void
+    public function setId($id): void
     {
-        $this->idSortie = $idSortie;
+        $this->id = $id;
     }
 
     /**
