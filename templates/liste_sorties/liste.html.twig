@@ -1,0 +1,94 @@
+{% extends'layout.html.twig' %}
+
+{% block title %} {{ parent() }} | Les Sorties{% endblock %}
+
+{% block main %}
+
+<div class="container-fluid pt-3">
+     <div class="row">
+        <div class="col">
+            <h2>Liste des Sorties</h2>
+            <hr>
+        </div>
+     </div>
+
+     <div class="row">
+         <div class="col text-right">
+             <p><strong>Date du jour : </strong><span id="date_jour"></span></p>
+           {# <p><strong>Participant : </strong><span id="participant_nom">{{ app.user.nom }} {{ app.user.prenom }}</span></p>#}
+         </div>
+     </div>
+
+    <div class="row">
+        <div class="col">
+            <h4>Filtrer les sorties</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 mt-2">
+            <div class="input-group mt-2">
+               <div class="input-group-pretend">
+                   <label class="input-group-text" for="#">Campus</label>
+               </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-group mt-2">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroup_nom">Nom de la sortie</label>
+        </div>
+        <input class="form-control" id="inputGroup_nom" type="text">
+    </div>
+    <div class="input-group mt-2">
+        <div class="input-group-prepend">
+            <label class="input-group-text">Dates :</label>
+        </div>
+            <input class="form-control" type="date" id="inputGroup_dateDebut">
+            <input class="form-control" type="date" id="inputGroup_dateFin">
+        </div>
+
+    <div class="col-12 col-md-6 col-lg-4 mt-2">
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox_jeSuisOrga">
+            <label class="form-check-label" for="checkbox_jeSuisOrga">
+                Sorties dont je suis l'organisateur/rice
+            </label>
+        </div>
+    <div class="form-check mt-2">
+        <input class="form-check-input" type="checkbox" id="checkbox_jeSuisInsc">
+        <label class="form-check-label" for="checkbox_jeSuisInsc">
+            Sorties auxquelles je suis inscrit/e
+        </label>
+    </div>
+    <div class="form-check mt-2">
+        <input class="form-check-input" type="checkbox" value="" id="checkbox_jeSuisPasInsc">
+        <label class="form-check-label" for="checkbox_jeSuisPasInsc">
+            Sorties auxquelles je ne suis pas inscrit/e
+        </label>
+    </div>
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Nom de la sortie</th>
+                <th scope="col">Date de la sortie</th>
+                <th scope="col">Cloture</th>
+                <th scope="col">inscrits/places</th>
+                <th scope="col">Etat</th>
+                <th scope="col">Inscrit</th>
+                <th scope="col">Organisteur</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+
+        </table>
+
+</div>
+
+
+
+
+
+</div>
+{% endblock %}

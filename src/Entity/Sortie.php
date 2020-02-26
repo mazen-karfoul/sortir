@@ -46,12 +46,22 @@ class Sortie
     /**
      * @ORM\Column(type="text", length=500, nullable=false)
      */
-    private $descriptionInfos;
+    private $commentaires;
+
+    /**
+    * @ORM\Column(type="integer")
+    */
+    private $ieu;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $etat;
 
     /**
      * @ORM\JoinColumn()Column(type="integer")
      */
-    private $etatSortie;
+    private $campus;
 
     /**
      * @ORM\Column(type="string", length=250)
@@ -64,30 +74,13 @@ class Sortie
     private $organisateur;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $lieuxNoLieu;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $etatsNoEtat;
-
-    /**
      * @return mixed
      */
     public function getId()
     {
         return $this->id;
     }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
+    
 
     /**
      * @return mixed
@@ -172,33 +165,65 @@ class Sortie
     /**
      * @return mixed
      */
-    public function getDescriptionInfos()
+    public function getCommentaires()
     {
-        return $this->descriptionInfos;
+        return $this->commentaires;
     }
 
     /**
-     * @param mixed $descriptionInfos
+     * @param mixed $commentaires
      */
-    public function setDescriptionInfos($descriptionInfos): void
+    public function setCommentaires($commentaires): void
     {
-        $this->descriptionInfos = $descriptionInfos;
+        $this->commentaires = $commentaires;
     }
 
     /**
      * @return mixed
      */
-    public function getEtatSortie()
+    public function getIeu()
     {
-        return $this->etatSortie;
+        return $this->ieu;
     }
 
     /**
-     * @param mixed $etatSortie
+     * @param mixed $ieu
      */
-    public function setEtatSortie($etatSortie): void
+    public function setIeu($ieu): void
     {
-        $this->etatSortie = $etatSortie;
+        $this->ieu = $ieu;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * @param mixed $etat
+     */
+    public function setEtat($etat): void
+    {
+        $this->etat = $etat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCampus()
+    {
+        return $this->campus;
+    }
+
+    /**
+     * @param mixed $campus
+     */
+    public function setCampus($campus): void
+    {
+        $this->campus = $campus;
     }
 
     /**
@@ -233,37 +258,8 @@ class Sortie
         $this->organisateur = $organisateur;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getLieuxNoLieu()
-    {
-        return $this->lieuxNoLieu;
-    }
 
-    /**
-     * @param mixed $lieuxNoLieu
-     */
-    public function setLieuxNoLieu($lieuxNoLieu): void
-    {
-        $this->lieuxNoLieu = $lieuxNoLieu;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getEtatsNoEtat()
-    {
-        return $this->etatsNoEtat;
-    }
-
-    /**
-     * @param mixed $etatsNoEtat
-     */
-    public function setEtatsNoEtat($etatsNoEtat): void
-    {
-        $this->etatsNoEtat = $etatsNoEtat;
-    }
 
 
 }

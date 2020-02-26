@@ -5,6 +5,8 @@ namespace App\Form;
 use App\Entity\Sortie;
 use Doctrine\DBAL\Types\DateTimeType;
 use Doctrine\DBAL\Types\TextType;
+use Doctrine\ORM\Mapping\Entity;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -45,13 +47,21 @@ class SortieType extends AbstractType
                 'label' => 'Durée : '
             ])
 
-            ->add('descriptionInfos', TextareaType::class, [
+            ->add('commentaires', TextareaType::class, [
                 'label'=> 'Description et infos : ',
                 'required' => 'false',
                 'attr' => [
                     'maxlength' => 500
                 ]
             ])
+
+            ->add('campus', EntityType::class, [
+                'label' => 'Lieu : ',
+                'class' => 'App\Entity\Campus',
+                'choice_label' => 'nom'
+            ])
+
+
 
 
 

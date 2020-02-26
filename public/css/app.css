@@ -1,51 +1,39 @@
+html {
+    font-family: 'Raleway', sans-serif;
+}
 
-
-main {
-    padding: 30px 0;
-    border-top: 1px solid #D3D3D3;
-    border-bottom: 1px solid #D3D3D3;
-
+input, button, submit {
+    display: inline-block;
+    border:none;
+    background-color: transparent;
+    color: #007bff;
 
 }
 
-h1 {
-    margin: 0;
-    text-align: center;
-
+.form-inline-delete {
+    display: inline-block;
 }
 
-h2 {
-    margin: 0;
-    text-align: center;
-
+.form-inline-delete:hover button {
+    text-decoration: underline;
 }
 
-footer {
-    padding: 20px 0;
-    text-align: center;
-    background-color: aliceblue;
-
+.faux-lien {
+    padding: 0 !important;
+}
+.faux-lien:hover {
+    text-decoration: underline;
 }
 
-body {
-    margin: 0;
-    font-family: 'Inconsolata', sans-serif;
-    font-size: 22px;
-    background-color: snow;
-    background-size: cover; /* Add this line */
-}
-.site-title img {
-   height: 60px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    vertical-align: middle;
-
-
+.show-phone-tr {
+    display: none;
 }
 
-
-nav {
-
+@media screen and (max-width: 768px) {
+    .hide-phone {
+        display: none;
+    }
+    .show-phone-tr {
+        display: table-row;
+    }
 }
-

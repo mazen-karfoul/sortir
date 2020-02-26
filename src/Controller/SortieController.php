@@ -13,27 +13,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class SortieController extends AbstractController
 {
     /**
-     * @Route("/sortie", name="sortie_add")
+     * Céer une sortie
+     * @Route("/add", name="sortie_add")
      */
-    public function add(EntityManagerInterface $em, Request $request)
+    public function add()
     {
 
-        //traiter le formulaire
-       $sortie = new Sortie();
-        $sortieForm = $this->createForm(SortieType::class, $sortie);
-        $sortieForm->handleRequest($request);
+        return $this->render("sortie/add.html.twig");
+    }
 
-        if ($sortieForm->isSubmitted() && $sortieForm->isValid()) {
-            $sortie->setIdSortie(true);
-            $sortie->setDateDebut(new\DateTime());
+    /**
+     * @Route("/liste", name="liste_sortie")
+     */
+    public function liste()
+    {
 
-            $em->persist($sortie);
-          $em->flush();
-
-
-        }
-
-
-        return $this->render('sortie/add.html.twig', ['sortieForm '=>$sortieForm->createView()]);
+        return $this->render("liste_sorties/liste.html.twig");
     }
 }
