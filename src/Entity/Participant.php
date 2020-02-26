@@ -62,6 +62,48 @@ class Participant implements UserInterface
     private $roles;
 
     /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $photo;
+
+    /**
+     * @return mixed
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param mixed $photo
+     */
+    public function setPhoto($photo): void
+    {
+        $this->photo = $photo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCampus()
+    {
+        return $this->campus;
+    }
+
+    /**
+     * @param mixed $campus
+     */
+    public function setCampus($campus): void
+    {
+        $this->campus = $campus;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus",inversedBy="participants")
+     */
+    private $campus;
+
+    /**
      * @return mixed
      */
     public function getIdparticipant()

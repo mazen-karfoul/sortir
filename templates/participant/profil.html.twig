@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+{{ form_start(participantForm) }}
+    {{ form_widget(participantForm) }}
+
+    <button type="submit"> Enregistrer </button>
+    <button value="Annuler"><a href="home.html.twig">Annuler</a></button>
+    {{ form_end(participantForm) }}
+{% endblock %}
+{% block title %} profile{% endblock %}

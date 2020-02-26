@@ -54,6 +54,12 @@ class Campus
         $this->nom = $nom;
     }
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Participant",mappedBy="campus")
+     */
+    private $participants;
+
+
 
 
 
