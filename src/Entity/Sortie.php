@@ -59,10 +59,22 @@ class Sortie
      */
     private $inscrivants;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu",inversedBy="sorties")
+     */
+    private $lieu;
+
+
+
+
+    /**
+     * @ORM\Column(type="string", length=250)
+     */
+    private $urlPhoto;
+
     public function __construct()
     {
         $this->inscrivants = new ArrayCollection();
-
     }
 
     /**
@@ -102,10 +114,8 @@ class Sortie
         $this->organisateur = $organisateur;
     }
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu",inversedBy="sorties")
-     */
-    private $lieu;
+
+
 
 
     /**
@@ -113,10 +123,7 @@ class Sortie
      */
     private $campus;
 
-    /**
-     * @ORM\Column(type="string", length=250)
-     */
-    private $urlPhoto;
+
 
 
     /**
@@ -223,6 +230,7 @@ class Sortie
     {
         $this->commentaires = $commentaires;
     }
+
 
     /**
      * @return mixed
