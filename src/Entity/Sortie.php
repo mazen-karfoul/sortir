@@ -50,7 +50,7 @@ class Sortie
 
 
     /**
-<<<<<<< HEAD
+     * <<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="App\Entity\Etat",inversedBy="sorties")
      */
     private $etat;
@@ -59,9 +59,10 @@ class Sortie
      * @ORM\OneToMany(targetEntity="App\Entity\Inscrivant",mappedBy="sortie")
      */
     private $inscrivants;
+
     public function __construct()
     {
-       $this->inscrivants = new ArrayCollection();
+        $this->inscrivants = new ArrayCollection();
 
     }
 
@@ -103,8 +104,6 @@ class Sortie
     private $lieu;
 
 
-
-
     /**
      * @ORM\JoinColumn()Column(type="integer")
      */
@@ -116,7 +115,6 @@ class Sortie
     private $urlPhoto;
 
 
-
     /**
      * @return mixed
      */
@@ -124,7 +122,7 @@ class Sortie
     {
         return $this->id;
     }
-    
+
 
     /**
      * @return mixed
@@ -221,4 +219,70 @@ class Sortie
     {
         $this->commentaires = $commentaires;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * @param mixed $etat
+     */
+    public function setEtat($etat): void
+    {
+        $this->etat = $etat;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getInscrivants(): ArrayCollection
+    {
+        return $this->inscrivants;
+    }
+
+    /**
+     * @param ArrayCollection $inscrivants
+     */
+    public function setInscrivants(ArrayCollection $inscrivants): void
+    {
+        $this->inscrivants = $inscrivants;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCampus()
+    {
+        return $this->campus;
+    }
+
+    /**
+     * @param mixed $campus
+     */
+    public function setCampus($campus): void
+    {
+        $this->campus = $campus;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUrlPhoto()
+    {
+        return $this->urlPhoto;
+    }
+
+    /**
+     * @param mixed $urlPhoto
+     */
+    public function setUrlPhoto($urlPhoto): void
+    {
+        $this->urlPhoto = $urlPhoto;
+    }
+
+}
 
