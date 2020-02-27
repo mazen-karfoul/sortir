@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -65,6 +66,38 @@ class Participant implements UserInterface
      * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $photo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Inscrivant",mappedBy="participant")
+     */
+    private $inscrivats;
+    public function __construct()
+         {
+                   $this->inscrivats = new ArrayCollection();
+           }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getSorties()
+    {
+        return $this->sorties;
+    }
+
+    /**
+     * @param mixed $sorties
+     */
+    public function setSorties($sorties): void
+    {
+        $this->sorties = $sorties;
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sortie",mappedBy="organisateur")
+     */
+    private $sorties;
 
     /**
      * @return mixed

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,22 +23,48 @@ class Lieu
     private $nom;
 
     /**
-     * @ORM\Column(type="string",length=30)
+     * @ORM\Column(type="string",length=30,nullable=true)
      */
     private $rue;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float",nullable=true)
      */
     private $latitude;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float",nullable=true)
      */
     private $longitude;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Ville")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ville",inversedBy="lieus")
      */
     private $ville;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sortie",mappedBy="lieu")
+     */
+    private $sorties;
+
+    public function __construct()
+         {
+         $this->sorties = new ArrayCollection();
+         }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSorties(): ArrayCollection
+    {
+        return $this->sorties;
+    }
+
+    /**
+     * @param ArrayCollection $sorties
+     */
+    public function setSorties(ArrayCollection $sorties): void
+    {
+        $this->sorties = $sorties;
+    }
 
     /**
      * @return mixed

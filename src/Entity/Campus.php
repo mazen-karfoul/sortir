@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,9 +19,51 @@ class Campus
 
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=true)
+     * @ORM\Column(type="string", length=30)
      */
    private $nom;
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSorties(): ArrayCollection
+    {
+        return $this->sorties;
+    }
+
+    /**
+     * @param ArrayCollection $sorties
+     */
+    public function setSorties(ArrayCollection $sorties): void
+    {
+        $this->sorties = $sorties;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
+    }
+
+    /**
+     * @param mixed $participants
+     */
+    public function setParticipants($participants): void
+    {
+        $this->participants = $participants;
+    }
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sortie",mappedBy="campus")
+     */
+   private $sorties;
+   public function __construct()
+       {
+          $this->sorties = new ArrayCollection();
+       }
 
     /**
      * @return mixed

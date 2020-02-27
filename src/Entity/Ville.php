@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -75,21 +76,31 @@ class Ville
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
-    public function getLieus()
+    public function getLieus(): ArrayCollection
     {
         return $this->lieus;
     }
 
     /**
-     * @param mixed $lieus
+     * @param ArrayCollection $lieus
      */
-    public function setLieus($lieus): void
+    public function setLieus(ArrayCollection $lieus): void
     {
         $this->lieus = $lieus;
     }
 
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Lieu",mappedBy="ville")
+     */
     private $lieus;
+
+    public function __construct()
+        {
+
+           $this->lieus = new ArrayCollection();
+        }
 }

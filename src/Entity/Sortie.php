@@ -29,12 +29,12 @@ class Sortie
     private $dateDebut;
 
     /**
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $duree;
 
     /**
-     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime")
      */
     private $dateCloture;
 
@@ -48,30 +48,58 @@ class Sortie
      */
     private $descriptionInfos;
 
-    /**
-     * @ORM\JoinColumn()Column(type="integer")
-     */
-    private $etatSortie;
 
     /**
-     * @ORM\Column(type="string", length=250)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Etat",inversedBy="sorties")
      */
-    private $urlPhoto;
+    private $etat;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\OneToMany(targetEntity="App\Entity\Inscrivant",mappedBy="sortie")
      */
-    private $organisateur;
+    private $inscrivants;
+    public function __construct()
+    {
+       $this->inscrivants = new ArrayCollection();
+
+    }
 
     /**
-     * @ORM\Column(type="integer")
+     * @return mixed
      */
-    private $lieuxNoLieu;
+    public function getLieu()
+    {
+        return $this->lieu;
+    }
 
     /**
-     * @ORM\Column(type="integer")
+     * @param mixed $lieu
      */
-    private $etatsNoEtat;
+    public function setLieu($lieu): void
+    {
+        $this->lieu = $lieu;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrganisateur()
+    {
+        return $this->organisateur;
+    }
+
+    /**
+     * @param mixed $organisateur
+     */
+    public function setOrganisateur($organisateur): void
+    {
+        $this->organisateur = $organisateur;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu",inversedBy="sorties")
+     */
+    private $lieu;
 
     /**
      * @return mixed
@@ -188,82 +216,44 @@ class Sortie
     /**
      * @return mixed
      */
-    public function getEtatSortie()
+    public function getEtat()
     {
-        return $this->etatSortie;
+        return $this->etat;
     }
 
     /**
-     * @param mixed $etatSortie
+     * @param mixed $etat
      */
-    public function setEtatSortie($etatSortie): void
+    public function setEtat($etat): void
     {
-        $this->etatSortie = $etatSortie;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUrlPhoto()
-    {
-        return $this->urlPhoto;
-    }
-
-    /**
-     * @param mixed $urlPhoto
-     */
-    public function setUrlPhoto($urlPhoto): void
-    {
-        $this->urlPhoto = $urlPhoto;
+        $this->etat = $etat;
     }
 
     /**
      * @return mixed
      */
-    public function getOrganisateur()
+    public function getCampus()
     {
-        return $this->organisateur;
+        return $this->campus;
     }
 
     /**
-     * @param mixed $organisateur
+     * @param mixed $campus
      */
-    public function setOrganisateur($organisateur): void
+    public function setCampus($campus): void
     {
-        $this->organisateur = $organisateur;
+        $this->campus = $campus;
     }
 
     /**
-     * @return mixed
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus",inversedBy="sorties")
      */
-    public function getLieuxNoLieu()
-    {
-        return $this->lieuxNoLieu;
-    }
+    private $campus;
 
     /**
-     * @param mixed $lieuxNoLieu
+     * @ORM\ManyToOne(targetEntity="App\Entity\Participant",inversedBy="sorties")
      */
-    public function setLieuxNoLieu($lieuxNoLieu): void
-    {
-        $this->lieuxNoLieu = $lieuxNoLieu;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEtatsNoEtat()
-    {
-        return $this->etatsNoEtat;
-    }
-
-    /**
-     * @param mixed $etatsNoEtat
-     */
-    public function setEtatsNoEtat($etatsNoEtat): void
-    {
-        $this->etatsNoEtat = $etatsNoEtat;
-    }
+    private $organisateur;
 
 
 }
