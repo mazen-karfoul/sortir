@@ -17,7 +17,7 @@ class Inscrivant
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Participant",inversedBy="inscrivats")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Participant",inversedBy="inscrivants")
      */
     private $participant;
 
