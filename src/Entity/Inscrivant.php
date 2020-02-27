@@ -22,6 +22,46 @@ class Inscrivant
     private $participant;
 
     /**
+     * @return mixed
+     */
+    public function getParticipant()
+    {
+        return $this->participant;
+    }
+
+    /**
+     * @param mixed $participant
+     */
+    public function setParticipant($participant): void
+    {
+        $this->participant = $participant;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSortie()
+    {
+        return $this->sortie;
+    }
+
+    /**
+     * @param mixed $sortie
+     */
+    public function setSortie($sortie): void
+    {
+        $this->sortie = $sortie;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Sortie",inversedBy="inscrivants")
      */
     private $sortie;

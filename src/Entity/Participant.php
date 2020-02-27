@@ -76,6 +76,30 @@ class Participant implements UserInterface
                    $this->inscrivats = new ArrayCollection();
            }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getInscrivats(): ArrayCollection
+    {
+        return $this->inscrivats;
+    }
+
+    /**
+     * @param ArrayCollection $inscrivats
+     */
+    public function setInscrivats(ArrayCollection $inscrivats): void
+    {
+        $this->inscrivats = $inscrivats;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
 
     /**
