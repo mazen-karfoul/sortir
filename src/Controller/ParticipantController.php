@@ -45,9 +45,16 @@ class ParticipantController extends AbstractController
     public function modifielProfil(EntityManagerInterface $em, Request $request,UserPasswordEncoderInterface $encoder)
     {
         $participant = new Participant();
-        $participant->setAdministrateur(true);
+       $participant1 = new Participant();
+       $participant->setAdministrateur(true);
         $participant->setActif(true);
         $participantForm = $this->createForm(ParticipantType::class, $participant);
+        $participantRpo =$this->getDoctrine()->getRepository(Participant::class );
+       // $participant1 = $participantRpo->find($id);
+       // $em->persist($participant1);
+        //$em->flush();
+
+
 
         $participantForm->handleRequest($request);
         if ($participantForm->isSubmitted() && $participantForm->isValid()) {
@@ -56,13 +63,16 @@ class ParticipantController extends AbstractController
             $hashed = $encoder->encodePassword($participant,$participant->getPassword());
             $participant->setPassword($hashed);
 
+
             $em->persist($participant);
             $em->flush();
 
             return $this->redirectToRoute('participant_home');
         }
         return $this->render('participant/profil.html.twig', [
-            "participantForm" => $participantForm->createView()
+            "participantForm" => $participantForm->createView(),
+
+
         ]);
     }
 }

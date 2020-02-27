@@ -18,7 +18,9 @@ class ParticipantType extends AbstractType
     {
         $builder
             ->add('username',TextType::class,[
-                'label'=>'Pseudo : '
+                'label'=>'Pseudo : ',
+
+
             ])
             ->add('prenom', TextType::class,[
                 'label'=> 'Prenom'

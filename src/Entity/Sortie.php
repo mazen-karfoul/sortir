@@ -50,7 +50,6 @@ class Sortie
 
 
     /**
-     * <<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="App\Entity\Etat",inversedBy="sorties")
      */
     private $etat;
@@ -65,6 +64,11 @@ class Sortie
         $this->inscrivants = new ArrayCollection();
 
     }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Participant",inversedBy="sorties")
+     */
+    private $organisateur;
 
     /**
      * @return mixed
@@ -105,7 +109,7 @@ class Sortie
 
 
     /**
-     * @ORM\JoinColumn()Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus",inversedBy="sorties")
      */
     private $campus;
 
