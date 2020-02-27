@@ -51,7 +51,7 @@ class Sortie
     /**
     * @ORM\Column(type="integer")
     */
-    private $ieu;
+    private $lieu;
 
     /**
      * @ORM\Column(type="integer")

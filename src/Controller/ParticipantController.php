@@ -28,7 +28,7 @@ class ParticipantController extends AbstractController
 
     public function home()
     {
-        return $this->render('participant/home.html.twig', []);
+        return $this->render('liste_sorties/liste.html.twig', []);
     }
 
     /**
