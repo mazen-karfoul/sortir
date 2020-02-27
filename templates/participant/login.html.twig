@@ -1,21 +1,41 @@
 {% extends "layout.html.twig" %}
 
-{% block title %} login {% endblock %}
+{% block title %}{{ parent() }} | login {% endblock %}
 
 {% block  main%}
- <form method="POST">
-     <label for="username">IDENTIFIANT :</label>
-     <input type="text" name="_username" id="username">
+   <div class="container">
+    <div class="row justify-content-center">
+        <div class="col col-md-10 col-lg-8">
+            <div class="card shadow mt-5">
+                <div class="card-body">
+                    <h3 class="card-title">Connexion</h3>
+                            <form method="POST">
+                                <div class="form-group">
+                                 <label for="username">IDENTIFIANT :</label>
+                                 <input type="text" name="_username" id="username" class="form-control" placeholder="pseudo" required autofocus>
+                                </div>
 
-     <label for="password"> MOT DE PASSE :</label>
-     <input type="password" name="_password" id="password">
+                                <div class="form-group">
+                                 <label for="password"> MOT DE PASSE :</label>
+                                 <input type="password" name="_password" id="password" class="form-control" placeholder="Mot de passe" required>
+                                    <a class="small" href="#"> Mot de passe oublié </a>
+                                </div>
+                                <div class="checkbox mb-3">
+                                <input type="checkbox" name="souvenir" id="souvenir">
+                                    <label for="souvenir"> Se souvenir de moi </label>
+                                </div>
 
-     <input type="checkbox" name="_remember_me" id="souvenir"> <label for="souvenir"> Se souvenir de moi </label>
 
-     <a href="#"> Mot de passe oublié </a>
+                                <button class="btn btn-primary" type="submit"> Connexion</button>
 
-     <button type="submit"> Connexion</button>
+                            </form>
+                </div>
+            </div>
 
- </form>
+        </div>
+    </div>
+    </div>
+
+
 
 {% endblock %}

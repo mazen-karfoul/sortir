@@ -1,18 +1,22 @@
 {% extends 'layout.html.twig' %}
 
-{%  form_theme sortieForm 'bootstrap_4_layout.html.twig' %}
 
-{% block title %}Créer une sortie {% endblock %}
+
+{% block title %}{{ parent() }} | Créer une sortie {% endblock %}
 
 {% block main %}
-    <h2>Add your idea!</h2>
+    <h2>Créer une sortie</h2>
 
-    {{ form_start(ideaForm) }}
-    {{ form_widget(ideaForm) }}
+   {# {{ form(sortieForm) }}#}
+{{ form_start(sortieForm) }}
+    {{ form_widget(sortieForm) }}
 
 
-    <input type="submit" value="Send" class="btn btn-success" />
+    <input type="submit" value="Enregistrer" class="btn btn-primary" />
+    <input type="submit" value="Publier la sortie" class="btn btn-primary" />
+    <input type="submit" value="Annuler" class="btn btn-primary" />
 
-    {{ form_end(ideaForm) }}
+
+    {{ form_end(sortieForm) }}
 
 {% endblock %}

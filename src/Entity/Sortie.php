@@ -46,10 +46,11 @@ class Sortie
     /**
      * @ORM\Column(type="text", length=500, nullable=false)
      */
-    private $descriptionInfos;
+    private $commentaires;
 
 
     /**
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="App\Entity\Etat",inversedBy="sorties")
      */
     private $etat;
@@ -101,6 +102,21 @@ class Sortie
      */
     private $lieu;
 
+
+
+
+    /**
+     * @ORM\JoinColumn()Column(type="integer")
+     */
+    private $campus;
+
+    /**
+     * @ORM\Column(type="string", length=250)
+     */
+    private $urlPhoto;
+
+
+
     /**
      * @return mixed
      */
@@ -108,14 +124,7 @@ class Sortie
     {
         return $this->id;
     }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
+    
 
     /**
      * @return mixed
@@ -200,60 +209,16 @@ class Sortie
     /**
      * @return mixed
      */
-    public function getDescriptionInfos()
+    public function getCommentaires()
     {
-        return $this->descriptionInfos;
+        return $this->commentaires;
     }
 
     /**
-     * @param mixed $descriptionInfos
+     * @param mixed $commentaires
      */
-    public function setDescriptionInfos($descriptionInfos): void
+    public function setCommentaires($commentaires): void
     {
-        $this->descriptionInfos = $descriptionInfos;
+        $this->commentaires = $commentaires;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getEtat()
-    {
-        return $this->etat;
-    }
-
-    /**
-     * @param mixed $etat
-     */
-    public function setEtat($etat): void
-    {
-        $this->etat = $etat;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCampus()
-    {
-        return $this->campus;
-    }
-
-    /**
-     * @param mixed $campus
-     */
-    public function setCampus($campus): void
-    {
-        $this->campus = $campus;
-    }
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Campus",inversedBy="sorties")
-     */
-    private $campus;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Participant",inversedBy="sorties")
-     */
-    private $organisateur;
-
-
-}
