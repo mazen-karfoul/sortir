@@ -50,7 +50,6 @@ class Sortie
 
 
     /**
-<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="App\Entity\Etat",inversedBy="sorties")
      */
     private $etat;
@@ -221,4 +220,6 @@ class Sortie
     {
         $this->commentaires = $commentaires;
     }
+}
+
 
