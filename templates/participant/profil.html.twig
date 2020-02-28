@@ -1,11 +1,42 @@
 {% extends 'layout.html.twig' %}
 
 {% block main %}
+
 {{ form_start(participantForm) }}
-    {{ form_widget(participantForm) }}
+    {{ form_row(participantForm.username,{
+    'attr':{ 'value':participant1.username}}
+    ) }}
+    {{ form_row(participantForm.nom,{
+    'attr':{ 'value':participant1.nom}}
+) }}
+    {{ form_row(participantForm.prenom,{
+    'attr':{ 'value':participant1.prenom}}
+) }}
+
+    {{ form_row(participantForm.telephone,{
+        'attr':{ 'value':participant1.telephone}}
+    ) }}
+
+    {{ form_row(participantForm.email,{
+        'attr':{ 'value':participant1.email}}
+    ) }}
+
+    {{ form_row(participantForm.password
+    ) }}
+
+    {{ form_row(participantForm.campus,{
+        'attr':{ 'value':participant1.campus.nom}}
+    ) }}
+
+    {{ form_row(participantForm.photo) }}
+
+
+
 
     <button type="submit"> Enregistrer </button>
     <button value="Annuler"><a href="{{ path('liste_sortie') }}">Annuler</a></button>
+
     {{ form_end(participantForm) }}
 {% endblock %}
+
 {% block title %} profile{% endblock %}

@@ -70,26 +70,26 @@ class Participant implements UserInterface
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Inscrivant",mappedBy="participant")
      */
-    private $inscrivats;
+    private $inscrivants;
     public function __construct()
          {
-                   $this->inscrivats = new ArrayCollection();
+                   $this->inscrivants = new ArrayCollection();
            }
 
     /**
      * @return ArrayCollection
      */
-    public function getInscrivats(): ArrayCollection
+    public function getInscrivants(): ArrayCollection
     {
-        return $this->inscrivats;
+        return $this->inscrivantsts;
     }
 
     /**
-     * @param ArrayCollection $inscrivats
+     * @param ArrayCollection $inscrivants
      */
-    public function setInscrivats(ArrayCollection $inscrivats): void
+    public function setInscrivats(ArrayCollection $inscrivants): void
     {
-        $this->inscrivats = $inscrivats;
+        $this->inscrivats = $inscrivants;
     }
 
     /**
