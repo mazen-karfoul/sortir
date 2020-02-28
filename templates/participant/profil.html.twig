@@ -2,10 +2,21 @@
 
 {% block main %}
 {{ form_start(participantForm) }}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col col-md-10 col-lg-8">
+            <div class="card shadow mt-5">
+                <div class="card-body">
     {{ form_widget(participantForm) }}
 
     <button type="submit"> Enregistrer </button>
     <button value="Annuler"><a href="{{ path('liste_sortie') }}">Annuler</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
     {{ form_end(participantForm) }}
 {% endblock %}
 {% block title %} profile{% endblock %}

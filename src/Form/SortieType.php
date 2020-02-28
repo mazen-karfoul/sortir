@@ -4,7 +4,10 @@ namespace App\Form;
 
 use App\Entity\Sortie;
 
+use Faker\Provider\DateTime;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormTypeInterface;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -27,14 +30,20 @@ class SortieType extends AbstractType
                 ]
             ])
 
-            ->add('dateDebut', DateTimeType::class, [
+            ->add('dateDebut', DateType::class , [
                'label' => 'Date et heure de la sortie : ',
-               'years' => range(2020,2030)
+               'years' => range(2020,2030),
+                'widget' => 'single_text',
+                'html5' => 'true'
+
             ])
 
-            ->add('dateCloture', DateTimeType::class, [
+            ->add('dateCloture', DateType::class , [
                 'label' => 'Date limite inscription : ',
-                'years'=> range(2020,2030)
+                'years'=> range(2020,2030),
+                'widget' => 'single_text',
+                'html5' => 'true'
+
             ])
 
             ->add('nbInscriptionsMax', IntegerType::class, [
@@ -53,17 +62,29 @@ class SortieType extends AbstractType
                 'label'=> 'Description et infos : ',
                 'required' => 'false',
                 'attr' => [
-                    'maxlength' => 500
+                    'maxlength' => 255
                 ]
             ])
 
-            ->add('campus', EntityType::class, [
+            ->add('lieu', EntityType::class, [
                 'label' => 'Lieu : ',
-                'class' => 'App\Entity\Campus',
+                'class' => 'App\Entity\Lieu',
                 'choice_label' => 'nom'
             ])
 
+            ->add('enregistrer', SubmitType::class, [
+                'label' => 'Enregistrer la sortie',
+                'attr' => [
+                    'class' => 'btn btn-light'
+                ]
+            ])
 
+            ->add('publier', SubmitType::class, [
+                'label' => 'Publier la sortie',
+                'attr' => [
+                    'class' => 'btn btn-success'
+                ]
+            ]);
 
 
 

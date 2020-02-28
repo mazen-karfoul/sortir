@@ -60,7 +60,6 @@ class Participant implements UserInterface
      */
     private $actif;
 
-    private $roles;
 
     /**
      * @ORM\Column(type="string",length=255,nullable=true)
@@ -70,26 +69,40 @@ class Participant implements UserInterface
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Inscrivant",mappedBy="participant")
      */
-    private $inscrivats;
+    private $inscrivants;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sortie",mappedBy="organisateur")
+     */
+    private $sorties;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus",inversedBy="participants")
+     */
+    private $campus;
+
+    private $roles;
+
+
     public function __construct()
-         {
-                   $this->inscrivats = new ArrayCollection();
-           }
+    {
+        $this->inscrivants = new ArrayCollection();
+    }
 
     /**
      * @return ArrayCollection
      */
-    public function getInscrivats(): ArrayCollection
+    public function getInscrivants(): ArrayCollection
     {
-        return $this->inscrivats;
+        return $this->inscrivants;
     }
 
     /**
-     * @param ArrayCollection $inscrivats
+     * @param ArrayCollection $inscrivants
      */
-    public function setInscrivats(ArrayCollection $inscrivats): void
+    public function setInscrivants(ArrayCollection $inscrivants): void
     {
-        $this->inscrivats = $inscrivats;
+        $this->inscrivants = $inscrivants;
     }
 
     /**
@@ -99,7 +112,6 @@ class Participant implements UserInterface
     {
         return $this->id;
     }
-
 
 
     /**
@@ -118,10 +130,6 @@ class Participant implements UserInterface
         $this->sorties = $sorties;
     }
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Sortie",mappedBy="organisateur")
-     */
-    private $sorties;
 
     /**
      * @return mixed
@@ -155,10 +163,6 @@ class Participant implements UserInterface
         $this->campus = $campus;
     }
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Campus",inversedBy="participants")
-     */
-    private $campus;
 
     /**
      * @return mixed
@@ -257,7 +261,6 @@ class Participant implements UserInterface
     }
 
 
-
     /**
      * @return mixed
      */
@@ -315,10 +318,9 @@ class Participant implements UserInterface
     }
 
 
-
     public function getSalt()
     {
-          return null;
+        return null;
     }
 
     public function eraseCredentials()

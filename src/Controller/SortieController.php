@@ -6,6 +6,7 @@ use App\Entity\Sortie;
 use App\Form\SortieType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,15 +24,19 @@ class SortieController extends AbstractController
      */
     public function add(EntityManagerInterface $em, Request $request)
     {
+
+        //traiter le formulaire
         $sortie = new Sortie();
         $sortieform = $this->createForm(SortieType::class, $sortie);
-
         $sortieform->handleRequest($request);
-        if ($sortieform->isSubmitted())
+
+        if ($sortieform->isSubmitted() && $sortieform->isValid()) {
+
+
+
             $em->persist($sortie);
             $em->flush();
-
-
+        }
 
         return $this->render("sortie/add.html.twig", [
             "sortieForm" => $sortieform->createView(),
@@ -39,6 +44,11 @@ class SortieController extends AbstractController
 
         ]);
     }
+
+    /**
+     * Affichage du detail d'une Sortie
+     *
+     */
 
     /**
      * @Route("/liste", name="liste_sortie")
