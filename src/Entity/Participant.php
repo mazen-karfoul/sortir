@@ -81,15 +81,15 @@ class Participant implements UserInterface
      */
     public function getInscrivants(): ArrayCollection
     {
-        return $this->inscrivantsts;
+        return $this->inscrivants;
     }
 
     /**
      * @param ArrayCollection $inscrivants
      */
-    public function setInscrivats(ArrayCollection $inscrivants): void
+    public function setInscrivants(ArrayCollection $inscrivants): void
     {
-        $this->inscrivats = $inscrivants;
+        $this->inscrivants = $inscrivants;
     }
 
     /**

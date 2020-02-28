@@ -30,7 +30,9 @@ class ParticipantController extends AbstractController
 
     public function home()
     {
-        return $this->render('liste_sorties/liste.html.twig', []);
+        $participant = new Participant();
+        $participant= $this->getUser();
+        return $this->render('liste_sorties/liste.html.twig', ['id'=>$participant->getId()]);
     }
 
     /**

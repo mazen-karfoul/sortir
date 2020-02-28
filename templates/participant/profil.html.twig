@@ -34,7 +34,7 @@
 
 
     <button type="submit"> Enregistrer </button>
-    <button value="Annuler"><a href="{{ path('liste_sortie') }}">Annuler</a></button>
+    <button value="Annuler"><a href="{{ path('liste_sortie',{'id': app.user.id}) }}">Annuler</a></button>
 
     {{ form_end(participantForm) }}
 {% endblock %}

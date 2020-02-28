@@ -41,11 +41,11 @@ class SortieController extends AbstractController
     }
 
     /**
-     * @Route("/liste", name="liste_sortie")
+     * @Route("/liste/{id}", name="liste_sortie")
      */
     public function liste()
     {
 
-        return $this->render("liste_sorties/liste.html.twig");
+        return $this->render("liste_sorties/liste.html.twig",[]);
     }
 }
