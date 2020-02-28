@@ -17,7 +17,9 @@ class ParticipantController extends AbstractController
      */
     public function login()
     {
-        return $this->render('participant/login.html.twig', [
+        $participant = new Participant();
+        $participant= $this->getUser();
+        return $this->render('participant/login.html.twig', ['id'=>$participant->getId()
 
         ]);
     }
@@ -40,29 +42,59 @@ class ParticipantController extends AbstractController
     }
 
     /**
-     * @Route("/profil",name="participant_profil")
+     * @Route("/profil/{id}",name="participant_profil")
      */
-    public function modifielProfil(EntityManagerInterface $em, Request $request,UserPasswordEncoderInterface $encoder)
+    public function modifielProfil($id, EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder)
     {
         $participant = new Participant();
-        $participant->setAdministrateur(true);
-        $participant->setActif(true);
+        $participant1 = new Participant();
+        //$participant->setAdministrateur(true);
+        //$participant->setActif(true);
         $participantForm = $this->createForm(ParticipantType::class, $participant);
+        $participantRpo = $this->getDoctrine()->getRepository(Participant::class);
+        $participant1 = $participantRpo->find($id);
+        //$em->persist($participant1);
+        //$em->flush();
+
 
         $participantForm->handleRequest($request);
         if ($participantForm->isSubmitted() && $participantForm->isValid()) {
 
             //hasher le mot de passe
+            $hashed = $encoder->encodePassword($participant1, $participant1->getPassword());
+            $participant1->setPassword($hashed);
+            $participant1->setUsername($participant->getUsername());
+            $participant1->setNom($participant->getNom());
+            $participant1->setPrenom($participant->getPrenom());
+            $participant1->setTelephone($participant->getTelephone());
+            $participant1->setEmail($participant->getEmail());
+            // hacher le mot de passe
+            //hasher le mot de passe
             $hashed = $encoder->encodePassword($participant,$participant->getPassword());
             $participant->setPassword($hashed);
+            $participant1->setPassword($participant->getPassword());
+            $participant1->setCampus($participant->getCampus());
+           // $file = $participant1->getPhoto();
+           //$fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
-            $em->persist($participant);
+
+           // $participant1->setPhoto($fileName);
+
+            //$participant = $participantForm->getData();
+
+
+            $em->persist($participant1);
             $em->flush();
 
-            return $this->redirectToRoute('participant_home');
+            $this->addFlash('success','the Idea has been added successfully');
+            //return $this->redirectToRoute('idea_detail',['id'=>$idea->getId()]);
+            return $this->redirectToRoute('participant_home',['id'=>$participant->getId()]);
         }
         return $this->render('participant/profil.html.twig', [
-            "participantForm" => $participantForm->createView()
+            "participantForm" => $participantForm->createView(),
+            "participant1" => $participant1
+
+
         ]);
     }
 }

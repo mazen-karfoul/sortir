@@ -89,6 +89,7 @@ class Participant implements UserInterface
         $this->inscrivants = new ArrayCollection();
     }
 
+
     /**
      * @return ArrayCollection
      */
@@ -100,6 +101,7 @@ class Participant implements UserInterface
     /**
      * @param ArrayCollection $inscrivants
      */
+
     public function setInscrivants(ArrayCollection $inscrivants): void
     {
         $this->inscrivants = $inscrivants;

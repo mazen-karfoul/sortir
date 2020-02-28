@@ -68,10 +68,12 @@ class Sortie
      */
     private $organisateur;
 
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Inscrivant",mappedBy="sortie")
      */
     private $inscrivants;
+
 
 
     /**
@@ -81,10 +83,12 @@ class Sortie
 
 
 
+
     public function __construct()
     {
         $this->inscrivants = new ArrayCollection();
     }
+
 
     /**
      * @return mixed
