@@ -78,6 +78,7 @@ class Sortie
 
     /**
      * @ORM\Column(type="string", length=250)
+     *
      */
     private $urlPhoto;
 

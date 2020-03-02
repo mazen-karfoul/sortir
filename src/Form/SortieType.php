@@ -7,6 +7,7 @@ use App\Entity\Sortie;
 use Faker\Provider\DateTime;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormTypeInterface;
 use Doctrine\ORM\Mapping\Entity;
@@ -72,19 +73,11 @@ class SortieType extends AbstractType
                 'choice_label' => 'nom'
             ])
 
-            ->add('enregistrer', SubmitType::class, [
-                'label' => 'Enregistrer la sortie',
-                'attr' => [
-                    'class' => 'btn btn-light'
-                ]
-            ])
+            ->add('urlPhoto',FileType::class,[
+              'label'=>'Photo : ',
+              'required'=>false
+          ])
 
-            ->add('publier', SubmitType::class, [
-                'label' => 'Publier la sortie',
-                'attr' => [
-                    'class' => 'btn btn-success'
-                ]
-            ]);
 
 
 

@@ -46,16 +46,20 @@ class SortieController extends AbstractController
     }
 
     /**
-     * Affichage du detail d'une Sortie
+     * Affichage du détail d'une sortie
      *
      */
 
+
+
     /**
      * @Route("/liste", name="liste_sortie")
+     * @Route("/liste/{id}", name="liste_sortie")
+
      */
     public function liste()
     {
 
-        return $this->render("liste_sorties/liste.html.twig");
+        return $this->render("liste_sorties/liste.html.twig",[]);
     }
 }

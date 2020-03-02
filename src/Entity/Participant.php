@@ -84,28 +84,10 @@ class Participant implements UserInterface
     private $roles;
 
 
-    public function __construct()
-    {
-        $this->inscrivants = new ArrayCollection();
-    }
 
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getInscrivants(): ArrayCollection
-    {
-        return $this->inscrivants;
-    }
 
-    /**
-     * @param ArrayCollection $inscrivants
-     */
 
-    public function setInscrivants(ArrayCollection $inscrivants): void
-    {
-        $this->inscrivants = $inscrivants;
-    }
 
     /**
      * @return mixed
@@ -113,89 +95,6 @@ class Participant implements UserInterface
     public function getId()
     {
         return $this->id;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getSorties()
-    {
-        return $this->sorties;
-    }
-
-    /**
-     * @param mixed $sorties
-     */
-    public function setSorties($sorties): void
-    {
-        $this->sorties = $sorties;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    /**
-     * @param mixed $photo
-     */
-    public function setPhoto($photo): void
-    {
-        $this->photo = $photo;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCampus()
-    {
-        return $this->campus;
-    }
-
-    /**
-     * @param mixed $campus
-     */
-    public function setCampus($campus): void
-    {
-        $this->campus = $campus;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getIdparticipant()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setIdparticipant($id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @param mixed $username
-     */
-    public function setUsername($username): void
-    {
-        $this->username = $username;
     }
 
     /**
@@ -262,7 +161,6 @@ class Participant implements UserInterface
         $this->email = $email;
     }
 
-
     /**
      * @return mixed
      */
@@ -278,6 +176,7 @@ class Participant implements UserInterface
     {
         $this->password = $password;
     }
+
 
     /**
      * @return mixed
@@ -309,6 +208,110 @@ class Participant implements UserInterface
     public function setActif($actif): void
     {
         $this->actif = $actif;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param mixed $photo
+     */
+    public function setPhoto($photo): void
+    {
+        $this->photo = $photo;
+    }
+
+    public function __construct()
+    {
+        $this->inscrivants = new ArrayCollection();
+    }
+
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getInscrivants(): ArrayCollection
+    {
+        return $this->inscrivants;
+    }
+
+    /**
+     * @param ArrayCollection $inscrivants
+     */
+
+    public function setInscrivants(ArrayCollection $inscrivants): void
+    {
+        $this->inscrivants = $inscrivants;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSorties()
+    {
+        return $this->sorties;
+    }
+
+    /**
+     * @param mixed $sorties
+     */
+    public function setSorties($sorties): void
+    {
+        $this->sorties = $sorties;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCampus()
+    {
+        return $this->campus;
+    }
+
+    /**
+     * @param mixed $campus
+     */
+    public function setCampus($campus): void
+    {
+        $this->campus = $campus;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getIdparticipant()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setIdparticipant($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username): void
+    {
+        $this->username = $username;
     }
 
     /**
