@@ -44,7 +44,7 @@ class Sortie
     private $nbInscriptionsMax;
 
     /**
-     * @ORM\Column(type="text", length=500, nullable=false)
+     * @ORM\Column(type="text", length=500, nullable=true)
      */
     private $commentaires;
 
@@ -68,7 +68,7 @@ class Sortie
 
 
     /**
-     * @ORM\Column(type="string", length=250)
+     * @ORM\Column(type="string", length=250,nullable=true)
      */
     private $urlPhoto;
 

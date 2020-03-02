@@ -9,17 +9,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class ParticipantController extends AbstractController
 {
     /**
      * @Route("/login", name="login")
      */
-    public function login()
+    public function login(AuthenticationUtils $authenticationUtils)
     {
         $participant = new Participant();
         $participant= $this->getUser();
-        return $this->render('participant/login.html.twig', ['id'=>$participant->getId()
+
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+        return $this->render('participant/login.html.twig', [
+            'last_username' => $lastUsername, 'error' => $error
 
         ]);
     }
@@ -32,7 +37,7 @@ class ParticipantController extends AbstractController
     {
         $participant = new Participant();
         $participant= $this->getUser();
-        return $this->render('liste_sorties/liste.html.twig', ['id'=>$participant->getId()]);
+        return $this->render('liste_sorties/liste.html.twig', []);
     }
 
     /**
