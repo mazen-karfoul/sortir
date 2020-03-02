@@ -3,7 +3,7 @@ security:
        our_db_provider:
           entity:
             class: App\Entity\Participant
-            property: username
+
 
 
 
@@ -18,7 +18,7 @@ security:
          logout_on_user_change: true
          logout:
               path: logout
-              target: home
+              target: login
          remember_me:
             secret:   '%kernel.secret%'
             lifetime: 2592000 # 30 days in second
