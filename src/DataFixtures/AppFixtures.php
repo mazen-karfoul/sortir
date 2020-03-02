@@ -24,6 +24,8 @@ class AppFixtures extends Fixture
             $sortie->setInscrivants($faker->name);
             $sortie->setCampus($faker->city);
             $sortie->setOrganisateur($faker->name);
+            $sortie->setUrlPhoto(str_replace('https://lorempixel.com', 'https://picsum.photos',
+                $faker->imageUrl(350,150)));
 
         }
 

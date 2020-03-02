@@ -6,12 +6,11 @@ use App\Entity\Sortie;
 use App\Form\SortieType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\FormTypeInterface;
+
 
 
 class SortieController extends AbstractController
@@ -47,8 +46,21 @@ class SortieController extends AbstractController
 
     /**
      * Affichage du détail d'une sortie
-     *
+     *  @Route("/sortie/{id}", name="sortie_detail")
      */
+    public function detail ($id)
+    {
+        //récupérer info d'une sortie dans la base de données
+        $sortieRepo = $this->getDoctrine()->getRepository(Sortie::class);
+        $sortie = $sortieRepo->find($id);
+       if ($sortie == null) {
+            throw $this->createNotFoundException("Sortie inconnu");
+        }
+        return $this->render("sortie/detail.html.twig", [
+                "sortie" => $sortie,
+        ]);
+    }
+
 
 
 
