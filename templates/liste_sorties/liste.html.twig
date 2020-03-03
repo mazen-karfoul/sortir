@@ -12,13 +12,18 @@
             <hr>
         </div>
      </div>
-
+<div class="jumbotron">
      <div class="row">
          <div class="col text-right">
+
 
              <p><strong>Date du jour : </strong><span id="date_jour">{{ "now"|date("m/d/Y") }}</span></p>
            {# <p><strong>Participant : </strong><span id="participant_nom">{{ app.user.nom }} {{ app.user.prenom }}</span></p>#}
              <p><strong>Participant :  </strong> {{ app.user.nom }} </p>
+
+
+
+
          </div>
      </div>
 
@@ -77,6 +82,9 @@
                 Sorties passées
             </label>
         </div>
+    </div>
+</div>
+
         <div class="row mt-4">
         <div class="col">
         <table class="table table-striped">

@@ -16,6 +16,8 @@ class ParticipantController extends AbstractController
 {
     /**
      * @Route("/login", name="login")
+     * @param AuthenticationUtils $authenticationUtils
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function login(AuthenticationUtils $authenticationUtils)
     {
@@ -23,11 +25,13 @@ class ParticipantController extends AbstractController
         $participant= $this->getUser();
 
 
+
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
         //$this->redirectToRoute('liste_sortie',['participant'=>$participant,'id'=>$participant->getId()]);
         return $this->render('participant/login.html.twig', [
             'last_username' => $lastUsername, 'error' => $error
+
 
         ]);
     }

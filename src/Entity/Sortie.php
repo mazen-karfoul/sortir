@@ -48,6 +48,10 @@ class Sortie
      */
     private $commentaires;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu",inversedBy="sorties")
+     */
+    private $lieu;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Etat",inversedBy="sorties")
@@ -55,74 +59,38 @@ class Sortie
     private $etat;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Inscrivant",mappedBy="sortie")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="sorties")
      */
+
     private $inscrivants;
     public function __construct()
     {
         $this->inscrivants = new ArrayCollection();
     }
 
+    private $campus;
+
+
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu",inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Participant", inversedBy="sorties")
      */
-    private $lieu;
+    private $organisateur;
+
+
+    /**
+
+
 
 
 
 
     /**
-     * @ORM\Column(type="string", length=250,nullable=true)
+     * @ORM\Column(type="string", length=250)
+     *
      */
     private $urlPhoto;
 
 
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Participant",inversedBy="sorties")
-     */
-    private $organisateur;
-
-    /**
-     * @return mixed
-     */
-    public function getLieu()
-    {
-        return $this->lieu;
-    }
-
-    /**
-     * @param mixed $lieu
-     */
-    public function setLieu($lieu): void
-    {
-        $this->lieu = $lieu;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOrganisateur()
-    {
-        return $this->organisateur;
-    }
-
-    /**
-     * @param mixed $organisateur
-     */
-    public function setOrganisateur($organisateur): void
-    {
-        $this->organisateur = $organisateur;
-    }
-
-
-
-
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Campus",inversedBy="sorties")
-     */
-    private $campus;
 
 
 
@@ -134,7 +102,6 @@ class Sortie
     {
         return $this->id;
     }
-
 
     /**
      * @return mixed
@@ -232,6 +199,21 @@ class Sortie
         $this->commentaires = $commentaires;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
+    }
+
+    /**
+     * @param mixed $lieu
+     */
+    public function setLieu($lieu): void
+    {
+        $this->lieu = $lieu;
+    }
 
     /**
      * @return mixed
@@ -250,22 +232,6 @@ class Sortie
     }
 
     /**
-     * @return ArrayCollection
-     */
-    public function getInscrivants(): ArrayCollection
-    {
-        return $this->inscrivants;
-    }
-
-    /**
-     * @param ArrayCollection $inscrivants
-     */
-    public function setInscrivants(ArrayCollection $inscrivants): void
-    {
-        $this->inscrivants = $inscrivants;
-    }
-
-    /**
      * @return mixed
      */
     public function getCampus()
@@ -279,6 +245,39 @@ class Sortie
     public function setCampus($campus): void
     {
         $this->campus = $campus;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrganisateur()
+    {
+        return $this->organisateur;
+    }
+
+    /**
+     * @param mixed $organisateur
+     */
+    public function setOrganisateur($organisateur): void
+    {
+        $this->organisateur = $organisateur;
+    }
+
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getInscrivants(): ArrayCollection
+    {
+        return $this->inscrivants;
+    }
+
+    /**
+     * @param ArrayCollection $inscrivants
+     */
+    public function setInscrivants(ArrayCollection $inscrivants): void
+    {
+        $this->inscrivants = $inscrivants;
     }
 
     /**
