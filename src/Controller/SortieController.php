@@ -17,7 +17,7 @@ class SortieController extends AbstractController
 {
     /**
      * Céer une sortie
-     * @Route("/add", name="sortie_add")
+     * @Route("/add/{id}", name="sortie_add")
      * @param EntityManagerInterface $em
      * @return Response
      */
@@ -28,6 +28,7 @@ class SortieController extends AbstractController
         $sortie = new Sortie();
         $sortieform = $this->createForm(SortieType::class, $sortie);
         $sortieform->handleRequest($request);
+        $sortie->setOrganisateur($this->getUser());
 
         if ($sortieform->isSubmitted() && $sortieform->isValid()) {
 
@@ -53,11 +54,14 @@ class SortieController extends AbstractController
         //récupérer info d'une sortie dans la base de données
         $sortieRepo = $this->getDoctrine()->getRepository(Sortie::class);
         $sortie = $sortieRepo->find($id);
+
+
        if ($sortie == null) {
             throw $this->createNotFoundException("Sortie inconnu");
         }
         return $this->render("sortie/detail.html.twig", [
                 "sortie" => $sortie,
+
         ]);
     }
 
@@ -74,4 +78,8 @@ class SortieController extends AbstractController
 
         return $this->render("liste_sorties/liste.html.twig",[]);
     }
+
+
 }
+
+

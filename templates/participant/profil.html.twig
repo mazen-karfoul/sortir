@@ -9,7 +9,7 @@
         <div class="col col-md-10 col-lg-8">
             <div class="card shadow mt-5">
                 <div class="card-body">
-
+                    <h2>Mon Profil</h2>
 
 
     {{ form_row(participantForm.username,{
@@ -43,10 +43,17 @@
 
 
     <button type="submit"> Enregistrer </button>
-    <button value="Annuler"><a href="{{ path('liste_sortie',{'id': app.user.id}) }}">Annuler</a></button>
+   {# <button value="Annuler"><a href="{{ path('liste_sortie',{'id': app.user.id}) }}">Annuler</a></button>#}
 
 
     {{ form_end(participantForm) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block title %} profile{% endblock %}

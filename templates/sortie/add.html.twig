@@ -47,28 +47,39 @@
         <div class="col-12 col-md-6 col-lg-4">
             {{ form_row(sortieForm.lieu) }}
         </div>
-
+    </div>
         <div class="row justify-content-center">
             <div class="col-12 col-md-6 col-lg-4">
                 {{ form_row(sortieForm.urlPhoto) }}
             </div>
+        </div>
 
-    </div>
-    <div class="row justify-content-center mt-4">
-        <div class="col-6 col-md-4 col-lg-2 text-center">
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-1">
             <button type="submit" class="btn btn-primary">Enregistrer la sortie</button>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2 text-center">
-            <button type="submit" class="btn btn-primary">Publier</button>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2 text-center">
-            <button type="submit" class="btn btn-primary">Annuler</button>
-        </div>
-    </div>
+
+
+
+                <button type="submit" class="btn btn-primary">Publier la sortie</button>
+
+
+
+
+                    <button type="submit" class="btn btn-primary">Annuler</button>
+
+            </div>
+
+
+
+
+
     {{ form_end(sortieForm) }}
 
 </div>
 
-
-
 {% endblock %}
+
+
+
+
