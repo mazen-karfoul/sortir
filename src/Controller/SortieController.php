@@ -26,6 +26,7 @@ class SortieController extends AbstractController
         $sortie = new Sortie();
         $sortieform = $this->createForm(SortieType::class, $sortie);
 
+
         $sortieform->handleRequest($request);
         if ($sortieform->isSubmitted())
             $em->persist($sortie);
@@ -45,7 +46,9 @@ class SortieController extends AbstractController
      */
     public function liste()
     {
+        $sortieRepo = $this->getDoctrine()->getRepository(Sortie::class);
+        $sorties = $sortieRepo->findAll();
 
-        return $this->render("liste_sorties/liste.html.twig",[]);
+        return $this->render("liste_sorties/liste.html.twig",["sorties"=>$sorties]);
     }
 }

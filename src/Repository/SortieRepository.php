@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Sortie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * @method Sortie|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,6 +19,34 @@ class SortieRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Sortie::class);
     }
+
+
+public function selectAll() {
+
+    $qb = $this->createQueryBuilder('s')
+        ->join('s.participant','p')
+        ->addSelect('p')
+        ->join('s.inscrivants','ins')
+        ->addSelect('ins')
+        ->join('s.campus','cam')
+        ->addSelect('cam')
+        ->join('s.etat','et')
+        ->addSelect('et')
+        ->join('s.lieu','li')
+        ->addSelect('li')
+        ->join('li.ville','vil')
+        ->addSelect('vil');
+
+    //   ->join('s.campus','ca')
+      // ->addSelect('ca')
+       // ->andWhere('s.organisateur.id >= ca.id');
+
+    $query = $qb->getQuery();
+    return new Paginator($query);
+
+
+
+}
 
     // /**
     //  * @return Sortie[] Returns an array of Sortie objects
@@ -47,4 +76,5 @@ class SortieRepository extends ServiceEntityRepository
         ;
     }
     */
+
 }

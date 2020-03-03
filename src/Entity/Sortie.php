@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\PersistentCollection;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SortieRepository")
@@ -58,6 +58,10 @@ class Sortie
      * @ORM\OneToMany(targetEntity="App\Entity\Inscrivant",mappedBy="sortie")
      */
     private $inscrivants;
+    public function __construct()
+    {
+        $this->inscrivants = new ArrayCollection();
+    }
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Lieu",inversedBy="sorties")
@@ -72,10 +76,7 @@ class Sortie
      */
     private $urlPhoto;
 
-    public function __construct()
-    {
-        $this->inscrivants = new ArrayCollection();
-    }
+
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Participant",inversedBy="sorties")
