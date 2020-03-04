@@ -10,7 +10,9 @@
         <div class="col col-md-10 col-lg-8">
             <div class="card shadow mt-5">
                 <div class="card-body">
+
                     <h2>Mon Profil</h2>
+
 
 
 
@@ -19,10 +21,10 @@
     ) }}
     {{ form_row(participantForm.nom,{
     'attr':{ 'value':participant1.nom}}
-) }}
+    ) }}
     {{ form_row(participantForm.prenom,{
     'attr':{ 'value':participant1.prenom}}
-) }}
+    ) }}
 
     {{ form_row(participantForm.telephone,{
         'attr':{ 'value':participant1.telephone}}
@@ -46,6 +48,7 @@
 
     <button type="submit"> Enregistrer </button>
    {# <button value="Annuler"><a href="{{ path('liste_sortie',{'id': app.user.id}) }}">Annuler</a></button>#}
+
 
     {{ form_end(participantForm) }}
 

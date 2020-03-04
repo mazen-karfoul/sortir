@@ -1,5 +1,6 @@
 {% extends 'layout.html.twig' %}
 
+
 {% block title %}{{ parent() }} | Afficher une sortie {% endblock %}
 
 {% block main %}
@@ -12,6 +13,14 @@
     <div class="container-fluid pt-3" id="info">
         <div class="row">
         <div class="col-6 md-4">
+
+{% block title %}{{ parent() }} | Afficher une sortie {% endblock %}
+
+{% block main %}
+    <h1 class="d-flex justify-content-center">Afficher une sortie</h1>
+    <div id="info">
+        <div>
+
             <h5>Nom de la sortie : {{ sortie.nom }}</h5><br>
             <h5>Date et heure de la sortie : {{ sortie.dateDebut | date('d-m-Y  H:i') }}</h5><br>
             <h5>Date limite d'inscription : {{ sortie.dateCloture | date('d-m-Y  H:i') }}</h5><br>
@@ -19,6 +28,7 @@
             <h5>Durée : {{ sortie.duree }} minutes</h5><br>
             <h5>Descriptions et infos : {{ sortie.commentaires }}</h5>
         </div>
+
        <div class="col-6 md-4">
             <h5>Lieu : {{ sortie.lieu.nom }}</h5><br>
             <h5>Rue : {{ sortie.lieu.rue }}</h5><br>
@@ -31,6 +41,11 @@
     </div><br>
 
     <div class="row justify-content-center" id="listeParticipants">
+
+    </div>
+
+    <div id="listeParticipants">
+
         <h3>Liste des participants inscrits</h3>
 
         <table id="tableauParticipants">
@@ -38,10 +53,17 @@
                 <th>Pseudo</th>
                 <th>Nom</th>
             </tr>
+
            {# {% for participant in participants %}
                    <tr>
                      <td>{{ participant.username}}</td>
                       <td><a href="{{ path('sortie_detail', {'id' : participant.id}) }}">{{ participant.nom }} {{ participant.prenom }}</td>
+
+            {# {% for participant in participants %}
+                   <tr>
+                     <td>{{ participant.username}}</td>
+                      <td><a href="{{ path('', {'id' : participant.id}) }}">{{ participant.nom }} {{ participant.prenom }}</td>
+
              </tr>
              {% endfor %}#}
 
