@@ -12,11 +12,17 @@
             <hr>
         </div>
      </div>
-<div class="jumbotron">
+
      <div class="row">
          <div class="col text-right">
+
              <p><strong>Date du jour : </strong><span id="date_jour"></span></p>
              <p><strong>Participant : </strong><span id="name"></span></p>
+
+
+             <p><strong>Date du jour : </strong><span id="date_jour"> {{ "now"|date('d-m-Y') }}</span></p>
+           {# <p><strong>Participant : </strong><span id="participant_nom">{{ app.user.nom }} {{ app.user.prenom }}</span></p>#}
+             <p><strong> Participant : </strong> {{ app.user.nom }}</p>
 
          </div>
      </div>
@@ -76,9 +82,6 @@
                 Sorties passées
             </label>
         </div>
-    </div>
-</div>
-
         <div class="row mt-4">
         <div class="table-responsive">
         <table class="table table-striped">
@@ -94,6 +97,21 @@
                 <th scope="col">Actions</th>
             </tr>
             </thead>
+
+            {% for sortie in sorties %}
+                <tr>
+                <td> {{ sortie.nom }}</td>
+                <td>{{ sortie.dateDebut|date('d-m-Y') }}</td>
+                    <td>{{ sortie.dateCloture |date('d-m-Y')}}</td>
+                    <td>\ {{ sortie.nbInscriptionsMax  }}</td>
+                    <td>{{ sortie.etat.libelle }}</td>
+
+
+                    <td>?</td>
+                    <td>{{ sortie.organisateur.nom }}</td>
+                    <td><a href="#">afficher</a></td>
+                </tr>
+            {% endfor %}
 
         </table>
         </div>
