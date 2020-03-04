@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @method Participant[]    findAll()
  * @method Participant[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ParticipantRepository extends ServiceEntityRepository implements UserLoaderInterface
+class ParticipantRepository extends ServiceEntityRepository  implements UserLoaderInterface
 {
     public function __construct(ManagerRegistry $registry)
     {

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -60,6 +61,7 @@ class Participant implements UserInterface
      */
     private $actif;
 
+    private $roles;
 
     /**
      * @ORM\Column(type="string",length=255,nullable=true)
@@ -70,24 +72,26 @@ class Participant implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\Inscrivant",mappedBy="participant")
      */
     private $inscrivants;
+    public function __construct()
+         {
+                   $this->inscrivants = new ArrayCollection();
+           }
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Sortie",mappedBy="organisateur")
+     * @return ArrayCollection
      */
-    private $sorties;
+    public function getInscrivants(): ArrayCollection
+    {
+        return $this->inscrivants;
+    }
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Campus",inversedBy="participants")
+     * @param ArrayCollection $inscrivants
      */
-    private $campus;
-
-    private $roles;
-
-
-
-
-
-
+    public function setInscrivants(ArrayCollection $inscrivants): void
+    {
+        $this->inscrivants = $inscrivants;
+    }
 
     /**
      * @return mixed
@@ -95,6 +99,98 @@ class Participant implements UserInterface
     public function getId()
     {
         return $this->id;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getSorties()
+    {
+        return $this->sorties;
+    }
+
+    /**
+     * @param mixed $sorties
+     */
+    public function setSorties($sorties): void
+    {
+        $this->sorties = $sorties;
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sortie",mappedBy="organisateur")
+     */
+    private $sorties;
+
+    /**
+     * @return mixed
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param mixed $photo
+     */
+    public function setPhoto($photo): void
+    {
+        $this->photo = $photo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCampus()
+    {
+        return $this->campus;
+    }
+
+    /**
+     * @param mixed $campus
+     */
+    public function setCampus($campus): void
+    {
+        $this->campus = $campus;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus",inversedBy="participants")
+     */
+    private $campus;
+
+    /**
+     * @return mixed
+     */
+    public function getIdparticipant()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setIdparticipant($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username): void
+    {
+        $this->username = $username;
     }
 
     /**
@@ -161,6 +257,8 @@ class Participant implements UserInterface
         $this->email = $email;
     }
 
+
+
     /**
      * @return mixed
      */
@@ -176,7 +274,6 @@ class Participant implements UserInterface
     {
         $this->password = $password;
     }
-
 
     /**
      * @return mixed
@@ -213,119 +310,16 @@ class Participant implements UserInterface
     /**
      * @return mixed
      */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    /**
-     * @param mixed $photo
-     */
-    public function setPhoto($photo): void
-    {
-        $this->photo = $photo;
-    }
-
-    public function __construct()
-    {
-        $this->inscrivants = new ArrayCollection();
-    }
-
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getInscrivants(): ArrayCollection
-    {
-        return $this->inscrivants;
-    }
-
-    /**
-     * @param ArrayCollection $inscrivants
-     */
-
-    public function setInscrivants(ArrayCollection $inscrivants): void
-    {
-        $this->inscrivants = $inscrivants;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSorties()
-    {
-        return $this->sorties;
-    }
-
-    /**
-     * @param mixed $sorties
-     */
-    public function setSorties($sorties): void
-    {
-        $this->sorties = $sorties;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCampus()
-    {
-        return $this->campus;
-    }
-
-    /**
-     * @param mixed $campus
-     */
-    public function setCampus($campus): void
-    {
-        $this->campus = $campus;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getIdparticipant()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setIdparticipant($id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @param mixed $username
-     */
-    public function setUsername($username): void
-    {
-        $this->username = $username;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getRoles()
     {
         return ["ROLE_USER"];
     }
 
 
+
     public function getSalt()
     {
-        return null;
+          return null;
     }
 
     public function eraseCredentials()

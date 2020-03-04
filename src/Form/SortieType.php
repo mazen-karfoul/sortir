@@ -4,11 +4,7 @@ namespace App\Form;
 
 use App\Entity\Sortie;
 
-use Faker\Provider\DateTime;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormTypeInterface;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -31,20 +27,14 @@ class SortieType extends AbstractType
                 ]
             ])
 
-            ->add('dateDebut', DateType::class , [
+            ->add('dateDebut', DateTimeType::class, [
                'label' => 'Date et heure de la sortie : ',
-               'years' => range(2020,2030),
-                'widget' => 'single_text',
-                'html5' => 'true'
-
+               'years' => range(2020,2030)
             ])
 
-            ->add('dateCloture', DateType::class , [
+            ->add('dateCloture', DateTimeType::class, [
                 'label' => 'Date limite inscription : ',
-                'years'=> range(2020,2030),
-                'widget' => 'single_text',
-                'html5' => 'true'
-
+                'years'=> range(2020,2030)
             ])
 
             ->add('nbInscriptionsMax', IntegerType::class, [
@@ -63,20 +53,16 @@ class SortieType extends AbstractType
                 'label'=> 'Description et infos : ',
                 'required' => 'false',
                 'attr' => [
-                    'maxlength' => 255
+                    'maxlength' => 500
                 ]
             ])
 
-            ->add('lieu', EntityType::class, [
+            ->add('campus', EntityType::class, [
                 'label' => 'Lieu : ',
-                'class' => 'App\Entity\Lieu',
+                'class' => 'App\Entity\Campus',
                 'choice_label' => 'nom'
             ])
 
-            ->add('urlPhoto',FileType::class,[
-              'label'=>'Photo : ',
-              'required'=>false
-          ])
 
 
 

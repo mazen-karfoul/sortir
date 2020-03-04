@@ -6,11 +6,11 @@ use App\Entity\Sortie;
 use App\Form\SortieType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormTypeInterface;
 
 
 class SortieController extends AbstractController
@@ -23,20 +23,15 @@ class SortieController extends AbstractController
      */
     public function add(EntityManagerInterface $em, Request $request)
     {
-
-        //traiter le formulaire
         $sortie = new Sortie();
         $sortieform = $this->createForm(SortieType::class, $sortie);
 
         $sortieform->handleRequest($request);
-
-        if ($sortieform->isSubmitted() && $sortieform->isValid()) {
-
-
-
+        if ($sortieform->isSubmitted())
             $em->persist($sortie);
             $em->flush();
-        }
+
+
 
         return $this->render("sortie/add.html.twig", [
             "sortieForm" => $sortieform->createView(),
@@ -46,35 +41,12 @@ class SortieController extends AbstractController
     }
 
     /**
-     * Affichage du détail d'une sortie
-     *  @Route("/sortie/{id}", name="sortie_detail")
-     */
-    public function detail ($id)
-    {
-        //récupérer info d'une sortie dans la base de données
-        $sortieRepo = $this->getDoctrine()->getRepository(Sortie::class);
-        $sortie = $sortieRepo->find($id);
-       if ($sortie == null) {
-            throw $this->createNotFoundException("Sortie inconnu");
-        }
-        return $this->render("sortie/detail.html.twig", [
-                "sortie" => $sortie,
-        ]);
-    }
-
-
-
-
-    /**
-     * @Route("/liste", name="liste_sortie")
      * @Route("/liste/{id}", name="liste_sortie")
-
      */
     public function liste()
     {
-        $sortieRepo = $this->getDoctrine()->getRepository(Sortie::class);
-        $sorties = $sortieRepo->findAll();
 
-        return $this->render("liste_sorties/liste.html.twig",["sorties"=>$sorties]);
+
+        return $this->render("liste_sorties/liste.html.twig",[]);
     }
 }
