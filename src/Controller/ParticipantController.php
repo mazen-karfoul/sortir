@@ -8,6 +8,7 @@ use App\Form\ParticipantType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -16,24 +17,18 @@ class ParticipantController extends AbstractController
 {
     /**
      * @Route("/login", name="login")
-     * @param AuthenticationUtils $authenticationUtils
-     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function login(AuthenticationUtils $authenticationUtils)
+    public function login(AuthenticationUtils $authenticationUtils) : Response
     {
         $participant = new Participant();
         $participant= $this->getUser();
 
-
-
         $error = $authenticationUtils->getLastAuthenticationError();
+
         $lastUsername = $authenticationUtils->getLastUsername();
-        //$this->redirectToRoute('liste_sortie',['participant'=>$participant,'id'=>$participant->getId()]);
-        return $this->render('participant/login.html.twig', [
-            'last_username' => $lastUsername, 'error' => $error
-
-
-        ]);
+        //$this->redirectToRoute("participant_profil",['id'=>$participant->getId()]);
+        //$this->redirectToRoute('liste_sortie',['id'=>$participant->getId()]);
+        return $this->render('participant/login.html.twig', ['last_username' => $lastUsername, 'error' => $error    ]);
     }
 
     /**
@@ -44,11 +39,10 @@ class ParticipantController extends AbstractController
     {
         $participant = new Participant();
         $participant= $this->getUser();
-        $sortieRepo = $this->getDoctrine()->getRepository(Sortie::class);
-        $sorties = $sortieRepo->findAll();
-        dump($sorties);
-
-        return $this->render('liste_sorties/liste.html.twig', ["sorties"=>$sorties,'participant'=>$participant]);
+        $repoSortie = $this->getDoctrine()->getRepository(Sortie::class);
+        $sorties = $repoSortie->findAll();
+        $participant = $this->getUser();
+        return $this->render('liste_sorties/liste.html.twig', ["sorties"=>$sorties,"participant"=>$participant]);
     }
 
     /**
