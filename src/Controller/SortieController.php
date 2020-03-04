@@ -49,29 +49,4 @@ class SortieController extends AbstractController
 
         return $this->render("liste_sorties/liste.html.twig",[]);
     }
-
-
-
-    public function annulerMaSortie($id, Request $request, EntityManagerInterface $em)
-    {
-        $motifForm = $this->createForm(MotifAnnulationType::class);
-        $motifForm->handleRequest($request);
-        $sortieRepo = $em->getRepository(Sortie::class);
-        $sortie = $sortieRepo->findbyId($id);
-        $user = $this->getUser();
-        $etatRepo = $em->getRepository(Etat::class);
-        $etat = $etatRepo->find(6);
-        $motif = $motifForm->get('MotifAnnulation')->getData();
-        $sortie->setMotifAnnulation($motif);
-        $sortie->setEtat($etat);
-        if ($motifForm->isSubmitted() && $motifForm->isValid() && $user == $sortie->getOrganise()) {
-            $em->flush($sortie);
-            $this->addFlash('success', 'Votre sortie "' . $sortie->getNom() . '" a bien été annulée !');
-            return $this->redirectToRoute('sorties_afficher');
-        }
-        return $this->render('sortie_afficher/annulerSortie.html.twig', [
-            "motifForm" => $motifForm->createView(),
-            "sortie" => $sortie
-        ]);
-    }
 }
