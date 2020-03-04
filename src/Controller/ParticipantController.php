@@ -7,6 +7,7 @@ use App\Form\ParticipantType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -16,7 +17,7 @@ class ParticipantController extends AbstractController
     /**
      * @Route("/login", name="login")
      * @param AuthenticationUtils $authenticationUtils
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function login(AuthenticationUtils $authenticationUtils)
     {
@@ -111,5 +112,23 @@ class ParticipantController extends AbstractController
         ]);
     }
 
+    /**
+     * @param $id
+     * @Route("/participant/{id}", name="profil_show")
+     * @return Response
+     */
+    public function afficherProfil($id)
+    {
+       $participantRepo = $this->getDoctrine()->getRepository(Participant::class);
+       $participant = $participantRepo->find($id);
+
+            if ($participant == null) {
+                throw $this->createNotFoundException("Participant inconnu");
+            }
+        return $this->render("participant/afficherProfil.html.twig", [
+            "participant" => $participant,
+
+        ]);
+    }
 
 }
