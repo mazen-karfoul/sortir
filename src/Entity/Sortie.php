@@ -85,7 +85,6 @@ class Sortie
 
 
     /**
-     * @ORM\Column(type="string", length=250, nullable=true)
      * @ORM\ManyToOne(targetEntity="App\Entity\Campus",inversedBy="sorties")
      */
     private $campus;
@@ -121,6 +120,15 @@ class Sortie
     {
         $this->organisateur = $organisateur;
     }
+
+
+
+
+
+
+
+
+
 
     /**
      * @return mixed

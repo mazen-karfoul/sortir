@@ -17,9 +17,6 @@ class ParticipantController extends AbstractController
 {
     /**
      * @Route("/login", name="login")
-     * @param AuthenticationUtils $authenticationUtils
-     * @return Response
-
      */
     public function login(AuthenticationUtils $authenticationUtils) : Response
     {
@@ -31,6 +28,8 @@ class ParticipantController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
         //$this->redirectToRoute("participant_profil",['id'=>$participant->getId()]);
         //$this->redirectToRoute('liste_sortie',['id'=>$participant->getId()]);
+        $this->addFlash('success','the serie has been saves!');
+        //return $this->redirectToRoute('',['id'=>$participant->getId()]);
         return $this->render('participant/login.html.twig', ['last_username' => $lastUsername, 'error' => $error    ]);
     }
 
@@ -112,24 +111,4 @@ class ParticipantController extends AbstractController
 
         ]);
     }
-
-    /**
-     * @param $id
-     * @Route("/participant/{id}", name="profil_show")
-     * @return Response
-     */
-    public function afficherProfil($id)
-    {
-       $participantRepo = $this->getDoctrine()->getRepository(Participant::class);
-       $participant = $participantRepo->find($id);
-
-            if ($participant == null) {
-                throw $this->createNotFoundException("Participant inconnu");
-            }
-        return $this->render("participant/afficherProfil.html.twig", [
-            "participant" => $participant,
-
-        ]);
-    }
-
 }

@@ -5,27 +5,25 @@
 {% block main %}
 
 
-<div class="container-fluid pt-3">
-     <div class="row">
-        <div class="col">
-            <h2>Liste des Sorties</h2>
-            <hr>
+    <div class="jumbotron jumbotron bg-cover">
+        <div class="overlay"></div>
+        <div class="container-fluid pt-3">
+            <div class="row">
+                <div class="col">
+                    <h2 class="row justify-content-center">Liste des Sorties</h2>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-right">
+                    <p><strong>Date du jour : </strong><span id="date_jour"> {{ "now"|date('d-m-Y') }}</span></p>
+                    <p><strong>Participant : </strong><span
+                                id="participant_nom">{{ app.user.nom }} {{ app.user.prenom }}</span></p>
+                </div>
+            </div>
         </div>
-     </div>
-
-     <div class="row">
-         <div class="col text-right">
-
-             <p><strong>Date du jour : </strong><span id="date_jour"></span></p>
-             <p><strong>Participant : </strong><span id="name"></span></p>
-
-
-             <p><strong>Date du jour : </strong><span id="date_jour"> {{ "now"|date('d-m-Y') }}</span></p>
-           {# <p><strong>Participant : </strong><span id="participant_nom">{{ app.user.nom }} {{ app.user.prenom }}</span></p>#}
-             <p><strong> Participant : </strong> {{ app.user.nom }}</p>
-
-         </div>
-     </div>
+    </div>
 
     <div class="row">
         <div class="col">
@@ -36,9 +34,10 @@
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4 mt-2">
             <div class="input-group mt-2">
-               <div class="input-group-pretend">
-                   <label class="input-group-text" for="#">Campus</label>
-               </div>
+                <div class="input-group-pretend">
+                    <label class="input-group-text" for="inputGroup_libelle">Campus</label>
+                </div>
+                <input class="form-control" id="inputGroup_libelle" type="text">
             </div>
         </div>
     </div>
@@ -53,9 +52,9 @@
         <div class="input-group-prepend">
             <label class="input-group-text">Dates :</label>
         </div>
-            <input class="form-control" type="date" id="inputGroup_dateDebut">
-            <input class="form-control" type="date" id="inputGroup_dateFin">
-        </div>
+        <input class="form-control" type="date" id="inputGroup_dateDebut">
+        <input class="form-control" type="date" id="inputGroup_dateFin">
+    </div>
 
     <div class="col-12 col-md-6 col-lg-4 mt-2">
         <div class="form-check mt-2">
@@ -64,68 +63,66 @@
                 Sorties dont je suis l'organisateur/rice
             </label>
         </div>
-    <div class="form-check mt-2">
-        <input class="form-check-input" type="checkbox" id="checkbox_jeSuisInsc">
-        <label class="form-check-label" for="checkbox_jeSuisInsc">
-            Sorties auxquelles je suis inscrit/e
-        </label>
-    </div>
-    <div class="form-check mt-2">
-        <input class="form-check-input" type="checkbox" value="" id="checkbox_jeSuisPasInsc">
-        <label class="form-check-label" for="checkbox_jeSuisPasInsc">
-            Sorties auxquelles je ne suis pas inscrit/e
-        </label>
-    </div>
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" id="checkbox_jeSuisInsc">
+            <label class="form-check-label" for="checkbox_jeSuisInsc">
+                Sorties auxquelles je suis inscrit/e
+            </label>
+        </div>
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox_jeSuisPasInsc">
+            <label class="form-check-label" for="checkbox_jeSuisPasInsc">
+                Sorties auxquelles je ne suis pas inscrit/e
+            </label>
+        </div>
         <div class="form-check mt-2">
             <input class="form-check-input" type="checkbox" value="" id="checkbox_sortiesPassées">
             <label class="form-check-label" for="checkbox_sortiesPassées">
                 Sorties passées
             </label>
         </div>
-        <div class="row mt-4">
-        <div class="table-responsive">
-        <table class="table table-striped">
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">Nom de la sortie</th>
-                <th scope="col">Date de la sortie</th>
-                <th scope="col">Cloture</th>
-                <th scope="col">inscrits/places</th>
-                <th scope="col">Etat</th>
-                <th scope="col">Inscrit</th>
-                <th scope="col">Organisteur</th>
-                <th scope="col">Actions</th>
-            </tr>
-            </thead>
 
-            {% for sortie in sorties %}
+
+    </div>
+    <br>
+    <div class="container">
+
+        <div class="col-4">
+            <table class="table table-striped">
+                <thead class="thead-dark">
                 <tr>
-                <td> {{ sortie.nom }}</td>
-                <td>{{ sortie.dateDebut|date('d-m-Y') }}</td>
-                    <td>{{ sortie.dateCloture |date('d-m-Y')}}</td>
-                    <td>\ {{ sortie.nbInscriptionsMax  }}</td>
-                    <td>{{ sortie.etat.libelle }}</td>
-
-
-                    <td>?</td>
-                    <td>{{ sortie.organisateur.nom }}</td>
-                    <td><a href="#">afficher</a></td>
+                    <th scope="col">Nom de la sortie</th>
+                    <th scope="col">Date de la sortie</th>
+                    <th scope="col">Cloture</th>
+                    <th scope="col">inscrits/places</th>
+                    <th scope="col">Etat</th>
+                    <th scope="col">Inscrit</th>
+                    <th scope="col">Organisteur</th>
+                    <th scope="col">Actions</th>
                 </tr>
-            {% endfor %}
+                </thead>
 
-        </table>
+                {% for sortie in sorties %}
+                    <tr>
+                        <td> {{ sortie.nom }}</td>
+                        <td>{{ sortie.dateDebut|date('d-m-Y') }}</td>
+                        <td>{{ sortie.dateCloture |date('d-m-Y') }}</td>
+                        <td> \ {{ sortie.nbInscriptionsMax }}</td>
+                        <td>{{ sortie.etat.libelle }}</td>
+
+
+                        <td>?</td>
+                        <td>{{ sortie.organisateur.nom }}</td>
+                        <td><a href="{{ path('sortie_detail', {'id': sortie.id}) }}">afficher</a></td>
+                    </tr>
+                {% endfor %}
+
+            </table>
         </div>
-        </div>
+    </div>
 
-</div>
-
-
-
-
-
-</div>
-
-
-    <button><a href="{{ path('sortie_add',{'id': app.user.id}) }}">Créer Une Sortie</a></button>
+    <div class="row justify-content-center">
+        <button class="btn btn-primary"><a href="{{ path('sortie_add',{'id': app.user.id}) }}">Créer Une Sortie</a>
+        </button>
+    </div>
 {% endblock %}
-

@@ -10,30 +10,31 @@ input, button, submit {
 
 }
 
-.form-inline-delete {
-    display: inline-block;
-}
 
-.form-inline-delete:hover button {
-    text-decoration: underline;
-}
 
-.faux-lien {
-    padding: 0 !important;
-}
-.faux-lien:hover {
-    text-decoration: underline;
-}
 
-.show-phone-tr {
-    display: none;
-}
 
-@media screen and (max-width: 768px) {
-    .hide-phone {
-        display: none;
-    }
-    .show-phone-tr {
-        display: table-row;
-    }
+.jumbotron {
+  text-align: center;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    text-shadow: 2px 2px #000;
+    background-image: url("https://images.wallpaperscraft.com/image/road_marking_route_asphalt_119431_2560x1600.jpg");
+}
+.bg-cover {
+    background-size: cover;
+    color: white;
+    background-position: center center;
+    position: relative;
+    z-index: -2;
+}
+.overlay {
+    background-color: #000;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
 }

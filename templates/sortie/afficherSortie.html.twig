@@ -1,0 +1,67 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block title %}{{ parent() }} | Afficher une sortie {% endblock %}
+
+{% block main %}
+    <div class="jumbotron jumbotron bg-cover">
+        <div class="overlay"></div>
+        <div class="container">
+            <h2 class="d-flex justify-content-center">Afficher une sortie</h2>
+        </div>
+    </div>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5>Nom de la sortie : {{ sortie.nom }}</h5><br>
+                            <h5>Date et heure de la sortie : {{ sortie.dateDebut | date('d-m-Y  H:i') }}</h5><br>
+                            <h5>Date limite d'inscription : {{ sortie.dateCloture | date('d-m-Y  H:i') }}</h5><br>
+                            <h5>Nombre de places : {{ sortie.nbInscriptionsMax }}</h5><br>
+                            <h5>Durée : {{ sortie.duree }} minutes</h5><br>
+                            <h5>Descriptions et infos : {{ sortie.commentaires }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5>Lieu : {{ sortie.lieu.nom }}</h5><br>
+                        <h5>Rue : {{ sortie.lieu.rue }}</h5><br>
+                        {#<h5>Ville : {{ sortie.lieu.ville.nom }}</h5><br>
+                         <h5>Code postal : {{ sortie.lieu.ville.codePostal}}</h5><br>#}
+                        <h5>Latitude : {{ sortie.lieu.latitude }}</h5><br>
+                        <h5>Longitude : {{ sortie.lieu.longitude }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="row justify-content-center" id="listeParticipants">
+            <div id="listeParticipants">
+                <h3>Liste des participants inscrits</h3>
+                <table id="tableauParticipants">
+                    <tr>
+                        <th>Pseudo</th>
+                        <th>Nom</th>
+                    </tr>
+
+
+                    {#{% for participants in participant %}
+                              <tr>
+                                <td>{{ participant.username}}</td>
+                                 <td><a href="{{ path('', {'id' : app.user.id}) }}">{{ participant.nom }} {{ participant.prenom }}</td>
+
+                        </tr>
+                        {% endfor %}#}
+
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

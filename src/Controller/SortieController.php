@@ -17,7 +17,7 @@ class SortieController extends AbstractController
 {
     /**
      * Céer une sortie
-     * @Route("/add/{id}", name="sortie_add")
+     * @Route("/add", name="sortie_add")
      * @param EntityManagerInterface $em
      * @return Response
      */
@@ -27,61 +27,50 @@ class SortieController extends AbstractController
         $sortieform = $this->createForm(SortieType::class, $sortie);
 
         $sortieform->handleRequest($request);
-        $sortie->setOrganisateur($this->getUser());
-
-        if ($sortieform->isSubmitted() && $sortieform->isValid()) {
-
-
-            $sortieform->handleRequest($request);
-            if ($sortieform->isSubmitted())
-                $em->persist($sortie);
+        if ($sortieform->isSubmitted())
+            $em->persist($sortie);
             $em->flush();
 
 
-            return $this->render("sortie/add.html.twig", [
-                "sortieForm" => $sortieform->createView(),
-                'sortie' => $sortie
 
-            ]);
-        }
+        return $this->render("sortie/add.html.twig", [
+            "sortieForm" => $sortieform->createView(),
+            'sortie' => $sortie
+
+        ]);
     }
 
-        /**
-         * Affichage du détail d'une sortie
-         * @Route("/sortie/{id}", name="sortie_detail")
-         */
-        public
-        function detail($id)
-        {
-            //récupérer info d'une sortie dans la base de données
-            $sortieRepo = $this->getDoctrine()->getRepository(Sortie::class);
-            $sortie = $sortieRepo->find($id);
+    /**
+     * @Route("/liste/{id}", name="liste_sortie")
+     */
+    public function liste()
+    {
+        $repoSortie = $this->getDoctrine()->getRepository(Sortie::class);
+        $sorties = $repoSortie->findAll();
+        $participant = $this->getUser();
+
+        return $this->render("liste_sorties/liste.html.twig",["sorties"=>$sorties,"participant"=>$participant]);
+    }
+
+    /**
+     * Affichage du détail d'une sortie
+     * @Route("/sortie/{id}", name="sortie_detail")
+     */
+    public
+    function detail($id)
+    {
+        //récupérer info d'une sortie dans la base de données
+        $sortieRepo = $this->getDoctrine()->getRepository(Sortie::class);
+        $sortie = $sortieRepo->find($id);
 
 
-            if ($sortie == null) {
-                throw $this->createNotFoundException("Sortie inconnu");
-            }
-            return $this->render("sortie/detail.html.twig", [
-                "sortie" => $sortie,
-
-            ]);
+        if ($sortie == null) {
+            throw $this->createNotFoundException("Sortie inconnu");
         }
+        return $this->render("sortie/afficherSortie.html.twig", [
+              'id'=>$sortie->getId(),
+            "sortie" => $sortie,
 
-
-
-        /**
-         * @Route("/liste/{id}", name="liste_sortie")
-         */
-        public
-        function liste()
-        {
-
-
-            return $this->render("liste_sorties/liste.html.twig", []);
-        }
-
-
-
+        ]);
+    }
 }
-
-

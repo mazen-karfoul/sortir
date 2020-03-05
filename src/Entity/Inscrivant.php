@@ -22,19 +22,6 @@ class Inscrivant
     private $participant;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Sortie",inversedBy="inscrivants")
-     */
-    private $sortie;
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @return mixed
      */
     public function getParticipant()
@@ -65,6 +52,19 @@ class Inscrivant
     {
         $this->sortie = $sortie;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Sortie",inversedBy="inscrivants")
+     */
+    private $sortie;
 }
 
 

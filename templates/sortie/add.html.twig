@@ -1,90 +1,34 @@
 {% extends 'layout.html.twig' %}
 
+
+
 {% block title %}{{ parent() }} | Créer une sortie {% endblock %}
 
 {% block main %}
-<div class="container-fluid pt-3">
-    <div class="row justify-content-center">
-       <div class="col-12 col-md-6 col-lg-4">
-           <h2>Créer une sortie</h2>
-           <hr>
-       </div>
-    </div>
+    <h2>Créer une sortie</h2>
 
     {{ form_start(sortieForm) }}
 
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 col-lg-4">
-            {{ form_row(sortieForm.nom) }}
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 col-lg-4">
-            {{ form_row(sortieForm.dateDebut) }}
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 col-lg-4">
-            {{ form_row(sortieForm.dateCloture) }}
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 col-lg-4">
-            {{ form_row(sortieForm.nbInscriptionsMax) }}
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 col-lg-4">
-            {{ form_row(sortieForm.duree) }}
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 col-lg-4">
-            {{ form_row(sortieForm.commentaires) }}
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 col-lg-4">
-            {{ form_row(sortieForm.lieu) }}
-        </div>
 
-    </div>
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-6 col-lg-4">
-                {{ form_row(sortieForm.urlPhoto) }}
+            <div class="col col-md-10 col-lg-8">
+                <div class="card shadow mt-5">
+                    <div class="card-body">
+                        <h2>Nouvelle Sortie </h2>
+                        {{ form_widget(sortieForm) }}
+
+
+                        <input type="submit" value="Enregistrer" class="btn btn-primary"/>
+                        <input type="submit" value="Publier la sortie" class="btn btn-primary"/>
+                        <input type="submit" value="Annuler" class="btn btn-primary"/>
+
+
+                        {{ form_end(sortieForm) }}
+                    </div>
+                </div>
             </div>
         </div>
-
-
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 col-lg-1">
-            <button type="submit" class="btn btn-primary">Enregistrer la sortie</button>
-
-
-
-                <button type="submit" class="btn btn-primary">Publier la sortie</button>
-
-
-
-
-                    <button type="submit" class="btn btn-primary">Annuler</button>
-
-            </div>
-
-
-
-
-
-    {{ form_end(sortieForm) }}
-
-</div>
+    </div>
 
 {% endblock %}
-
-
-
-
-
-
-
-
